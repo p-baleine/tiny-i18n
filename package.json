@@ -1,0 +1,11 @@
+{
+  "name": "tiny-i18n",
+  "version": "0.0.1",
+  "dependencies": {
+    "minstache": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*"
+  }
+}

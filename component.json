@@ -1,0 +1,15 @@
+{
+  "name": "tiny-i18n",
+  "repo": "p-baleine/tiny-i18n",
+  "description": "small i18n implementation similar to Thomas Fuchs's gist(1364216)",
+  "version": "0.0.1",
+  "keywords": ["i18n"],
+  "dependencies": {
+    "visionmedia/minstache": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}
