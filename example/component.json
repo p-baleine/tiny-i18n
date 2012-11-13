@@ -1,0 +1,17 @@
+{
+  "name": "example-for-tiny-i18n",
+  "description": "Example App for tiny-i18n",
+  "dependencies": {
+    "component/jquery": "*"
+  },
+  "development": {},
+  "scripts": [
+    "index.js",
+    "template.js"
+  ],
+  "paths": ["client"],
+  "local": ["boot"],
+  "styles": [
+    "example-for-tiny-i18n.css"
+  ]
+}
