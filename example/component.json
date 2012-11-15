@@ -1,17 +1,12 @@
 {
-  "name": "example-for-tiny-i18n",
-  "description": "Example App for tiny-i18n",
+  "name": "example",
+  "description": "example app for tiny-i18n",
+  "version": "0.0.1",
   "dependencies": {
-    "component/jquery": "*"
+    "component/domify": "*",
+    "p-baleine/tiny-i18n": "*"
   },
-  "development": {},
   "scripts": [
-    "index.js",
-    "template.js"
-  ],
-  "paths": ["client"],
-  "local": ["boot"],
-  "styles": [
-    "example-for-tiny-i18n.css"
+    "index.js"
   ]
 }

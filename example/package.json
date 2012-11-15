@@ -1,9 +1,10 @@
 {
-  "name": "example-app",
+  "name": "example",
+  "private": true,
   "version": "0.0.1",
   "dependencies": {
-    "express": "3.x",
+    "express": "3.0.x",
     "express-expose": "0.3.x",
-    "minstache": "1.x"
+    "jade": "0.27.x"
   }
 }

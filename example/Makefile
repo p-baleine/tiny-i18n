@@ -1,5 +1,5 @@
 
-build: components index.js example-for-tiny-i18n.css template.js
+build: components index.js example.css template.js
 	@component build --dev
 
 template.js: template.html
