@@ -4,7 +4,8 @@
  */
 
 var express = require('express')
-  , expose = require('express-expose')
+  , locale = require('./server/locale')
+  , locales = require('./server/locales.json')
   , app = express();
 
 // middleware
@@ -12,48 +13,16 @@ var express = require('express')
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.static(__dirname + '/build'));
+app.use(locale(locales));
 
 // configure
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
-// expose
-
-app.expose(function() {
-  var i18n = require('p-baleine-tiny-i18n/index.js');
-  i18n.ja = { 'hello': 'こんにちは世界' };
-  i18n.en = { 'hello': 'Hello, world.' };
-});
-
-/**
- * expose function which set locale
- */
-
-function locale(req, res, next) {
-  var language = req.acceptedLanguages
-    , ready = ['ja', 'en']
-    , i, l, key;
-
-  for (i = 0, l = language.length; i < l; i++) {
-    if (~ready.indexOf(language[i])) {
-      key = language[i];
-      break;
-    }
-  }
-  if (i == language.length) { key = 'en'; }
-  res.expose([
-    ';(function() {',
-    '  var i18n = require(\'p-baleine-tiny-i18n/index.js\');',
-    '  i18n.t = i18n("' + key + '");',
-    '})();'
-  ].join('\n'));
-  next();
-}
-
 // all routes
 
-app.get('*', locale, function(req, res) {
+app.get('*', function(req, res) {
   res.render('index');
 });
 
