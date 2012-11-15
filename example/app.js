@@ -44,10 +44,10 @@ function locale(req, res, next) {
   if (i == language.length) { key = 'en'; }
   res.expose([
     ';(function() {',
-      'var i18n = require(\'p-baleine-tiny-i18n/index.js\');',
-      'i18n.t = i18n("' + key + '");',
+    '  var i18n = require(\'p-baleine-tiny-i18n/index.js\');',
+    '  i18n.t = i18n("' + key + '");',
     '})();'
-  ].join(''));
+  ].join('\n'));
   next();
 }
 
