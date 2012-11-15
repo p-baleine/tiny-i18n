@@ -20,4 +20,8 @@ describe('tiny-i18n', function() {
   it('should interpolate variables', function() {
     t('X messages', { count: 5 }).should.eql('5 Nachrichten');
   });
+
+  it('should expose `t` method after setup', function() {
+    i18n.should.have.property('t', t);
+  });
 });

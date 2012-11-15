@@ -23,17 +23,20 @@ function i18n(locale) {
   var parts = locale.split('-');
   i18n.locale = parts[0].toLowerCase() + (parts.length > 1 ? parts[0].toUpperCase() : '');
 
-  return function(id, vars) {
-    var t = translation(id);
+  function t(id, vars) {
+    var translated = translation(id);
     vars = vars || {};
-
     if (!t) {
-      t = (i18n.en && i18n.en[id]) || '(?) ' + id;
-      console && is.function(console.log) && console.log('missing [' + i18n.locale + '] ' + id);
+      translated = (i18n.en && i18n.en[id]) || '(?) ' + id;
+      log('missing [' + i18n.locale + '] ' + id);
     }
-
-    return mm(t, vars);
+    return mm(translated, vars);
   };
+
+  // export `t` method for later use.
+  i18n.t = t;
+
+  return t;
 }
 
 /**
@@ -60,3 +63,18 @@ function translation(id) {
   return ((locale = i18n[i18n.locale]) && locale[id]) ||
         ((locale = i18n[i18n.locale.slice(0, 2)]) || locale[id]);
 }
+
+/**
+ * logging
+ * @param {String} message
+ * @api private
+ */
+
+function log(message) {
+  console && is.function(console.log) && console.log('missing [' + i18n.locale + '] ' + id);
+}
+
+// `t` is not yet ready at this point
+i18n.t = function() {
+  log('please setup tiny-i18n');
+};
